@@ -1,0 +1,6 @@
+include LICENSE
+recursive-include sapiens_lite *.py
+recursive-exclude sapiens_lite/__pycache__ *
+recursive-exclude sapiens_lite/**/__pycache__ *
+recursive-exclude assets/
+recursive-exclude docs/
