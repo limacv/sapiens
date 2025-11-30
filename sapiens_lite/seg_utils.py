@@ -31,7 +31,7 @@ class SapienSegModelSimple:
         self.std = [58.5, 57.0, 57.5]
 
     def inference(self, imgs):  # B, 3, H, W in RGB, range (0-255)
-        ori_hw = (img.shape[2], img.shape[3])
+        ori_hw = (imgs.shape[2], imgs.shape[3])
         imgs = self._preprocess(imgs)
         with torch.no_grad():
             results = self.model(imgs.to(self.dtype).to(self.device))
@@ -60,8 +60,8 @@ class SapienSegModelSimple:
 
 if __name__ == "__main__":
     model = SapienSegModelSimple(
-        checkpoint_path="/root/sapiens/sapiens_1b_goliath_best_goliath_mIoU_7994_epoch_151_bfloat16.pt2",
-        is_torchscript=False,
+        checkpoint_path="/fsx_scanline/from_eyeline/users/lima/pretrained/sapiens/seg/sapiens_1b_goliath_best_goliath_mIoU_7994_epoch_151_torchscript.pt2",
+        is_torchscript=True,
         device="cuda:0",
         inf_hw=(1024, 768),
     )
